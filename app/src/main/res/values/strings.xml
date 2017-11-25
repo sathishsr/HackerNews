@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HakerNews</string>
+    <string name="TITLE_HOME">Home</string>
+    <string name="TITLE_DETAILS">Details</string>
+</resources>
