@@ -7,5 +7,5 @@ import android.support.v4.app.Fragment;
  */
 
 public interface FragmentCallbacks {
-    void replaceFragment(Fragment fragment);
+    void replaceFragment(Fragment fragment, boolean isAdd);
 }

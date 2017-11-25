@@ -16,28 +16,33 @@ public class MainActivity extends AppCompatActivity implements FragmentCallbacks
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        replaceFragment(new HomeFragment());
+        replaceFragment(new HomeFragment(), false);
 
     }
 
 
     @Override
-    public void replaceFragment(Fragment fragment) {
+    public void replaceFragment(Fragment fragment, boolean isAdd) {
 
         if (fragment != null) {
             try {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 String backStateName = fragment.getClass().getName();
 
-                ft.add(R.id.container, fragment);
+                if (isAdd) {
+                    ft.add(R.id.container, fragment);
+                    ft.addToBackStack(backStateName);
+                } else {
+                    ft.replace(R.id.container, fragment);
+                }
 
 
-                ft.addToBackStack(backStateName);
                 ft.commit();
 
 
             } catch (Exception e) {
                 e.printStackTrace();
+                Log.e("Error", "Error in creating fragment");
             }
         } else {
             // error in creating fragment

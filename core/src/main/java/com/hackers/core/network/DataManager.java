@@ -36,6 +36,7 @@ public class DataManager {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
                 apiCallbacks.handleError(error);
             }
         });
@@ -53,6 +54,7 @@ public class DataManager {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
                 apiCallbacks.handleError(error);
             }
         });

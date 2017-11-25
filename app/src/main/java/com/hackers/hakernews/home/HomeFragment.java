@@ -3,7 +3,6 @@ package com.hackers.hakernews.home;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hackers.core.BaseFragment;
-import com.hackers.core.adapter.CommonRecyclerAdapter;
 import com.hackers.core.HackersConstant.HackerNewsConstant;
+import com.hackers.core.adapter.CommonRecyclerAdapter;
 import com.hackers.core.adapter.PopulationListener;
 import com.hackers.core.models.TopStories;
 import com.hackers.core.views.RecyclerTouchListener;
@@ -73,7 +72,7 @@ public class HomeFragment extends BaseFragment {
             bundle.putSerializable(HackerNewsConstant.TOP_STORY, topStoriesList.get(position));
             DetailsFragment detailsFragment = new DetailsFragment();
             detailsFragment.setArguments(bundle);
-            ((MainActivity) getActivity()).replaceFragment(detailsFragment);
+            ((MainActivity) getActivity()).replaceFragment(detailsFragment, true);
 
         }
 
@@ -118,7 +117,7 @@ public class HomeFragment extends BaseFragment {
         if (progress != null)
             progress.setVisibility(View.GONE);
         if (o instanceof JSONArray) {
-            Log.d("RESPONSE,", o.toString());
+
             JSONArray jsonArray = (JSONArray) o;
 
             try {

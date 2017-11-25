@@ -11,8 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hackers.core.BaseFragment;
-import com.hackers.core.adapter.CommonRecyclerAdapter;
 import com.hackers.core.HackersConstant.HackerNewsConstant;
+import com.hackers.core.adapter.CommonRecyclerAdapter;
 import com.hackers.core.adapter.PopulationListener;
 import com.hackers.core.models.TopStories;
 import com.hackers.hakernews.R;
@@ -44,7 +44,7 @@ public class DetailsFragment extends BaseFragment {
     ProgressBar progress;
     @BindView(R.id.toolBarTitle)
     TextView toolBarTitle;
-    private ArrayList<TopStories> topStoriesList = new ArrayList<>();
+    private ArrayList<TopStories> kidStoriesList = new ArrayList<>();
 
 
     @Override
@@ -112,21 +112,20 @@ public class DetailsFragment extends BaseFragment {
         try {
             JSONArray jsonArray = jsonObject.getJSONArray(HackerNewsConstant.KIDS);
 
-            try {
 
-                topStoriesList.clear();
+
+                kidStoriesList.clear();
                 for (int i = 0; i < jsonArray.length(); i++) {
                     int id = jsonArray.getInt(i);
+
                     TopStories topStories = new TopStories(id + "");
-                    topStoriesList.add(topStories);
+                    kidStoriesList.add(topStories);
                 }
                 adapter.clear();
-                adapter.addAll(topStoriesList);
+                adapter.addAll(kidStoriesList);
                 adapter.notifyDataSetChanged();
 
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+
 
         } catch (JSONException e) {
             Toast.makeText(getActivity(), "No value for the attribute Kid", Toast.LENGTH_SHORT).show();
@@ -139,7 +138,7 @@ public class DetailsFragment extends BaseFragment {
         if (progress != null)
             progress.setVisibility(View.GONE);
 
-        Toast.makeText(getActivity(), "Some error from Network", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Network error!!", Toast.LENGTH_SHORT).show();
 
     }
 
